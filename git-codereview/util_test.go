@@ -230,10 +230,10 @@ func (gt *gitTest) removeStubHooks() {
 	os.RemoveAll(gt.client + "/.git/hooks/")
 }
 
-func requireGofmt(t *testing.T) {
+func mustHaveGofmt(t *testing.T) {
 	t.Helper()
 	if _, err := exec.LookPath("gofmt"); err != nil {
-		t.Skipf("skipping test: gofmt not found in $PATH")
+		t.Skip("gofmt not found in $PATH")
 	}
 }
 

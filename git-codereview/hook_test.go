@@ -218,7 +218,7 @@ func testHookCommitMsgBranchPrefix(t *testing.T, gerrit bool) {
 }
 
 func TestHookPreCommit(t *testing.T) {
-	requireGofmt(t)
+	mustHaveGofmt(t)
 	gt := newGitTest(t)
 	defer gt.done()
 
@@ -252,7 +252,7 @@ func TestHookPreCommit(t *testing.T) {
 }
 
 func TestHookChangeGofmt(t *testing.T) {
-	requireGofmt(t)
+	mustHaveGofmt(t)
 	// During git change, we run the gofmt check before invoking commit,
 	// so we should not see the line about 'git commit' failing.
 	// That is, the failure should come from git change, not from
@@ -283,7 +283,7 @@ func TestHookChangeGofmt(t *testing.T) {
 }
 
 func TestHookPreCommitDetachedHead(t *testing.T) {
-	requireGofmt(t)
+	mustHaveGofmt(t)
 	// If we're in detached head mode, something special is going on,
 	// like git rebase. We disable the gofmt-checking precommit hook,
 	// since we expect it would just get in the way at that point.
@@ -341,7 +341,7 @@ func TestHookPreCommitEnv(t *testing.T) {
 }
 
 func TestHookPreCommitUnstaged(t *testing.T) {
-	requireGofmt(t)
+	mustHaveGofmt(t)
 	gt := newGitTest(t)
 	defer gt.done()
 	gt.work(t)
